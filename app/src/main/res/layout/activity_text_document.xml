@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/activity_main"
+    tools:context="com.example.ahmed.doodle.TextDocument">
+
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar"
+        ></include>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/tool_bar"
+        android:text="Type here"
+        android:inputType="textMultiLine|text|textCapSentences"
+        android:gravity="top|left"
+        android:id="@+id/ed"/>
+
+
+</RelativeLayout>
