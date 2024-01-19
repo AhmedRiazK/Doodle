@@ -1,4 +1,4 @@
-package com.example.ahmed.doodle;
+package com.ahmed.doodle;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -27,7 +27,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -36,7 +35,7 @@ import android.widget.Toast;
 
 import static android.view.View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
 
-import com.example.doodle.R;
+import com.ahmed.doodle.R;
 
 public class TextDocument extends AppCompatActivity {
     RelativeLayout layout, layoutt;

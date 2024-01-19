@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
         <activity
-            android:name="com.example.ahmed.doodle.SplashScreen"
+            android:name="com.ahmed.doodle.SplashScreen"
             android:exported="true"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait">
@@ -27,15 +27,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.ahmed.doodle.SelectionActivity"
+            android:name="com.ahmed.doodle.SelectionActivity"
             android:launchMode="singleInstance"
             android:theme="@style/Theme.AppCompat" />
         <activity
-            android:name="com.example.ahmed.doodle.TextDocument"
+            android:name="com.ahmed.doodle.TextDocument"
             android:launchMode="singleInstance"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
-            android:name="com.example.ahmed.doodle.Doodle"
+            android:name="com.ahmed.doodle.Doodle"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar.FullScreen"/>

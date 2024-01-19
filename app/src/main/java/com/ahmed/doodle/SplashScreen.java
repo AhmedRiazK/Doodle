@@ -1,7 +1,6 @@
-package com.example.ahmed.doodle;
+package com.ahmed.doodle;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Handler;
 //import android.support.v7.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +9,7 @@ import android.view.View;
 
 import static android.view.View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
 
-import com.example.doodle.R;
+import com.ahmed.doodle.R;
 
 public class SplashScreen extends AppCompatActivity {
 

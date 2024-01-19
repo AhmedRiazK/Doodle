@@ -1,4 +1,4 @@
-package com.example.ahmed.doodle;
+package com.ahmed.doodle;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -62,14 +62,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Method;
-import java.security.Permission;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.UUID;
 
 import static android.view.View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
 
-import com.example.doodle.R;
+import com.ahmed.doodle.R;
 
 public class Doodle extends AppCompatActivity {
     RelativeLayout relativeLayout, popUpWinLayout, progressLayout;
@@ -232,16 +231,28 @@ public class Doodle extends AppCompatActivity {
     public final int handleBtPermission (String permission)
     {
         int result = ActivityCompat.checkSelfPermission(Doodle.this, permission);
-        if (permission.equals(Manifest.permission.BLUETOOTH_CONNECT))
+        switch (permission)
         {
-            if (result != PackageManager.PERMISSION_GRANTED) {
-                if (Build.VERSION.SDK_INT > 31)
-                {
-                    ActivityCompat.requestPermissions(Doodle.this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 0);
+            case Manifest.permission.BLUETOOTH_CONNECT:
+            {
+                if (result != PackageManager.PERMISSION_GRANTED) {
+                    if (Build.VERSION.SDK_INT > 31)
+                    {
+                        ActivityCompat.requestPermissions(Doodle.this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 0);
+                    }
+                    else
+                    {
+                        ActivityCompat.requestPermissions(Doodle.this, new String[]{Manifest.permission.BLUETOOTH}, 0);
+                    }
                 }
-                else
-                {
-                    ActivityCompat.requestPermissions(Doodle.this, new String[]{Manifest.permission.BLUETOOTH}, 0);
+            }
+            case Manifest.permission.BLUETOOTH_SCAN:
+            {
+                if (result != PackageManager.PERMISSION_GRANTED) {
+                    if (Build.VERSION.SDK_INT > 31)
+                    {
+                        ActivityCompat.requestPermissions(Doodle.this, new String[]{Manifest.permission.BLUETOOTH_SCAN}, 0);
+                    }
                 }
             }
         }
@@ -340,14 +351,15 @@ public class Doodle extends AppCompatActivity {
                             }
                         }
                         if(btAdapter.isEnabled()){
-                            connectToBT();
-                            Log.d("BT Device address",address);
-                            if(btState){
-                                TransferData transferData = new TransferData();
-                                transferData.execute();
-                            }
-                            else {
-                                Toast.makeText(Doodle.this,"Unable to connect to Doodle",Toast.LENGTH_SHORT).show();
+                            if (handleBtPermission(Manifest.permission.BLUETOOTH_SCAN) == PackageManager.PERMISSION_GRANTED) {
+                                connectToBT();
+                                Log.d("BT Device address", address);
+                                if (btState) {
+                                    TransferData transferData = new TransferData();
+                                    transferData.execute();
+                                } else {
+                                    Toast.makeText(Doodle.this, "Unable to connect to Doodle", Toast.LENGTH_SHORT).show();
+                                }
                             }
                         }
                         popUpWindowDismiss();
@@ -637,6 +649,7 @@ public class Doodle extends AppCompatActivity {
 
     }
 
+    @SuppressLint("MissingPermission")
     public void connectToBT(){
         Log.d(TAG, "...onResume - try connect...");
         BluetoothDevice device = btAdapter.getRemoteDevice("00:28:13:00:21:FE");
@@ -706,6 +719,7 @@ public class Doodle extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("MissingPermission")
     private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException {
         try {
             final Method m = device.getClass().getMethod("createInsecureRfcommSocketToServiceRecord", new Class[] { UUID.class });

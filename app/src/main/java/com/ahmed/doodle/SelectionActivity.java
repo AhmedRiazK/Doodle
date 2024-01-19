@@ -1,4 +1,4 @@
-package com.example.ahmed.doodle;
+package com.ahmed.doodle;
 
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
@@ -15,7 +15,7 @@ import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.doodle.R;
+import com.ahmed.doodle.R;
 
 public class SelectionActivity extends AppCompatActivity {
     Display display;
